@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+# pytorch
+transformers
+pandas
+sqlalchemy
+psycopg2-binary
+pymongo
+python-dotenv
+arxiv
