@@ -98,14 +98,9 @@ class TextEncoder:
         """
         Compute cosine similarity between query and paper embeddings
         """
-        # print(f"Query embedding shape in similarity: {query_embedding.shape}")
-        # print(f"Paper embeddings shape in similarity: {paper_embeddings.shape}")
-
+        # Normalize embeddings
         query_norm = query_embedding / np.linalg.norm(query_embedding)
-        print(f"Query norm shape: {query_norm.shape}")
-
         paper_norms = paper_embeddings / np.linalg.norm(paper_embeddings)
-        print(f"Paper norms shape: {paper_norms.shape}")
         
         # Compute cosine similarity
         similarities = np.dot(paper_norms, query_norm)

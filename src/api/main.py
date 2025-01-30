@@ -80,7 +80,6 @@ async def search_papers(search: PaperSearch, db: Session = Depends(get_db)):
     try:
         # Generate query embedding
         query_embedding = encoder.encode(search.query)
-        print("Query embedding shape:", query_embedding.shape)
 
         # Get all papers with embeddings
         papers = db.query(Paper).filter(Paper.embedding.isnot(None)).all()
@@ -93,7 +92,6 @@ async def search_papers(search: PaperSearch, db: Session = Depends(get_db)):
         results = []
         for paper in papers:
             paper_embedding = np.array(paper.embedding)
-            print("Paper embedding shape:", paper_embedding.shape)
 
             similarity = float(encoder.compute_similarity(query_embedding[0], paper_embedding[0]))
             
